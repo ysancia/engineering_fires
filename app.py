@@ -30,11 +30,11 @@ accuracy = evaluate_acc.evaluate(predictions)
 evaluate_r2 = MulticlassClassificationEvaluator(labelCol="size_index",
 											predictionCol="Prediction",
 											metricName="r2")
-r2 = evaluate_r2(predictions)
+r2 = evaluate_r2.evaluate(predictions)
 evaluate_rmse = MulticlassClassificationEvaluator(labelCol="size_index",
 											predictionCol="Prediction",
 											metricName="accuracy")
-rmse = evaluate_rmse(predictions)
+rmse = evaluate_rmse.evaluate(predictions)
 
 preds = [int(row["prediction"]) for row in predictions.select("Prediction").collect()]
 actual = [int(row["size_index"]) for row in predictions.select("size_index").collect()]
