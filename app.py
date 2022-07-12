@@ -7,15 +7,20 @@ import pyspark
 from pyspark.sql import SparkSession
 
 from pyspark.ml.classification import LogisticRegressionModel
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 spark = (pyspark.sql.SparkSession.builder.getOrCreate())
-model = LogisticRegressionModel.load("./lr2")
+#model = LogisticRegressionModel.load("./lr2")
 
 df = spark.read.load("processed_combined.parquet")
 train_df, test_df = df.randomSplit([0.7,0.3],seed=25)
 
+model = LogisticRegression(labelCol = "size_index", featuresCol = "features", predictionCol = "Prediction")
+model = model.fit(train_df)
 
-predictions = model.transform(test_df).cache()
+
+
+predictions = model2.transform(test_df).cache()
 evaluate_acc = MulticlassClassificationEvaluator(labelCol="size_index",
 											predictionCol="Prediction",
 											metricName="accuracy")
