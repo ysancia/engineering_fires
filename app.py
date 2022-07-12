@@ -90,19 +90,19 @@ c1, c2 = st.columns((1, 1, ))
 
 
 #if new_input.select("rain") != 0.00:
-	new_input = va.transform(new_input)
-	mm = mm.fit(new_input)
-	new_scale = mm.transform(new_input)
-	new_pred = model.transform(new_scale)
-	prob = new_pred.select("probability").collect()
-	predi = new_pred.select("Prediction").collect()
-	proba = [row[0] for row in prob]
-	probs = []
-	for i in proba[0]:
-		probs.append(i)
-	labels = ["Class A","Class B","Class C","Class D",
+new_input = va.transform(new_input)
+mm = mm.fit(new_input)
+new_scale = mm.transform(new_input)
+new_pred = model.transform(new_scale)
+prob = new_pred.select("probability").collect()
+predi = new_pred.select("Prediction").collect()
+proba = [row[0] for row in prob]
+probs = []
+for i in proba[0]:
+	probs.append(i)
+labels = ["Class A","Class B","Class C","Class D",
 				"Class E","Class F", "Class G"]	
-	results = pd.DataFrame(list(zip(labels,probs)),columns=["Class of Fire","Probability"])
+results = pd.DataFrame(list(zip(labels,probs)),columns=["Class of Fire","Probability"])
 with c2:	
 	st.markdown("# Classes of Fire")
 	st.markdown(
