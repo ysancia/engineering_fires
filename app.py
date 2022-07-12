@@ -57,8 +57,8 @@ high = st.number_input("Enter your daily high temperature (in F):  ", min_value=
 low = st.number_input("Enter your daily low temperature (in F): ", min_value=None, max_value=None)
 rain = st.number_input("Enter your precipitation (in inches): ", min_value=None, max_value=None)
 
-lat = np.round(lat,decimals=1)
-lon = np.round(lon,decimals=1)
+lat = np.round(lat,decimals=1).asType(double)
+lon = np.round(lon,decimals=1).asType(double)
 high = (high - 32) * 5/9
 low = (low - 32) * 5/9
 rain = (rain * 25.4) * 10
