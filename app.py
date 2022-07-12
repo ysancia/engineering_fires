@@ -88,8 +88,12 @@ if new_input.select("rain") != 0.00:
 	mm = mm.fit(new_input)
 	new_scale = mm.transform(new_input)
 	new_pred = model.transform(new_scale)
-	prob = new_pred.select("probability").show()
-	predi = new_pred.select("Prediction").show()
+	prob = new_pred.select("probability").collect()
+	predi = new_pred.select("Prediction").collect()
+
+	for i in prob:
+		st.write(i)
+
 	st.write("high",high)
 	st.write("low",low)
 	st.write("rain",rain)
