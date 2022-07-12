@@ -76,7 +76,7 @@ new_input = new_input.withColumn("LAT", new_input["LAT"].cast("double"))
 new_input = new_input.withColumn("LON", new_input["LON"].cast("double"))
 new_input = new_input.withColumn("maxT", new_input["maxT"].cast("double"))
 new_input = new_input.withColumn("minT", new_input["minT"].cast("double"))
-new_input = new_input.withColumn("rain", new_input["rain"].cast("double"))
+new_input = new_input.withColumn("precip", new_input["rain"].cast("double"))
 
 
 va = VectorAssembler(inputCols=features2, outputCol = "features")
