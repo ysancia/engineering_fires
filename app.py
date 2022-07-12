@@ -11,7 +11,7 @@ from pyspark.ml.classification import LogisticRegressionModel
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 conf = SparkConf().setAppName("model").setMaster("local")
-spark = SparkSession.builder..config(conf=conf).getOrCreate()
+spark = SparkSession.builder.config(conf=conf).getOrCreate()
 #model = LogisticRegressionModel.load("./lr2")
 
 df = spark.read.load("processed_combined.parquet")
