@@ -97,20 +97,33 @@ if new_input.select("rain") != 0.00:
 		probs.append(i)
 	labels = ["Class A","Class B","Class C","Class D",
 				"Class E","Class F", "Class G"]	
-				
-	results = pd.DataFrame(list(zip(labels,probs)))
 
-	st.markdown(
+	results = pd.DataFrame(list(zip(labels,probs)),columns=["Class of Fire","Probability"])
+
+	st.text(
 		"Class A - one-fourth acre or less \n"
+		)
+	st.text(
 		"Class B - more than one-fourth acre, but less than 10 acres \n"
+		)
+	st.text(
 		"Class C - 10 acres or more, but less than 100 acres \n"
+		)
+	st.text(
 		"Class D - 100 acres or more, but less than 300 acres \n"
+		)
+	st.text(
 		"Class E - 300 acres or more, but less than 1,000 acres \n"
+		)
+	st.text(
 		"Class F - 1,000 acres or more, but less than 5,000 acres \n"
-		"Class G - 5,000 acres or more \n")
+		)
+	st.text(
+		"Class G - 5,000 acres or more \n"
+		)
 
 
-
+	st.markdown("# Predictions")
 	st.dataframe(results)
 
 
