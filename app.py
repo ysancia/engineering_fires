@@ -78,7 +78,6 @@ new_input = new_input.withColumn("maxT", new_input["maxT"].cast("double"))
 new_input = new_input.withColumn("minT", new_input["minT"].cast("double"))
 new_input = new_input.withColumn("rain", new_input["rain"].cast("double"))
 
-st.show(new_input.show())
 
 va = VectorAssembler(inputCols=features2, outputCol = "features")
 
