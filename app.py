@@ -61,7 +61,10 @@ high = (high - 32) * 5/9
 low = (low - 32) * 5/9
 rain = (rain * 25.4) * 10
 
-new_input = [lat,lon,high,low,rain]
+new_input = spark.createDataFrame([(1, lat, lon, high, low, rain)],
+									["id","LAT","LON","maxT","minT","precip"])
+
+st.show(df.show())
 
 va = VectorAssembler(inputCols=features2, outputCol = "features")
 
