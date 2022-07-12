@@ -68,4 +68,6 @@ va = VectorAssembler(inputCols=features2, outputCol = "features")
 new_input = va.transform(new_input)
 
 new_pred = model.transform(new_input)
-st.show(new_pred)
+
+if new_input[4] != 0.00:
+	st.show(new_pred)
