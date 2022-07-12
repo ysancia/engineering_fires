@@ -91,8 +91,11 @@ if new_input.select("rain") != 0.00:
 	prob = new_pred.select("probability").collect()
 	predi = new_pred.select("Prediction").collect()
 
-	for row in prob:
-		st.write(row[0])
+	proba = [row[0] for row in prob]
+	st.write(proba)
+	st.write(max_value(proba))
+	#for row in prob:
+	#	st.write(row[0])
 
 	st.write("high",high)
 	st.write("low",low)
