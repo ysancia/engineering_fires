@@ -43,9 +43,7 @@ actual = [int(row["size_index"]) for row in predictions.select("size_index").col
 
 fig, ax = plt.subplots()
 ax.scatter(actual, preds, color='b', s=60, alpha=0.1)
-plt.plot([0,7], [0,7], color='r')
-#plt.xlim([0, 260])
-#plt.ylim([0, 260])
+#plt.plot([0,7], [0,7], color='r')
 ax.set_xlabel('Actual')
 ax.set_ylabel('Predicted')
 ax.set_title('Actual vs Predicted category',fontsize=20)
