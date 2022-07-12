@@ -90,4 +90,7 @@ if new_input.select("rain") != 0.00:
 	new_pred = model.transform(new_scale)
 	prob = new_pred.select("probability").show()
 	predi = new_pred.select("prediction").show()
+	st.write("high",high)
+	st.write("low",low)
+	st.write("rain",rain)
 	st.write(prob, predi)
