@@ -36,7 +36,7 @@ accuracy = evaluate_acc.evaluate(predictions)
 											#metricName="accuracy")
 #rmse = evaluate_rmse.evaluate(predictions)
 
-preds = [int(row["prediction"]) for row in predictions.select("Prediction").collect()]
+preds = [int(row["Prediction"]) for row in predictions.select("Prediction").collect()]
 actual = [int(row["size_index"]) for row in predictions.select("size_index").collect()]
 
 fig, ax = plt.subplots()
