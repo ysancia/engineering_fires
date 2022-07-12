@@ -72,11 +72,11 @@ new_input = spark.createDataFrame([(1, lat, lon, high, low, rain)],
 									T.StructField("minT",T.StringType(),True),
 									T.StructField("rain",T.StringType(),True)]))
 
-new_input = new_input.withColumn("LAT", joindf["LAT"].cast("double"))
-new_input = new_input.withColumn("LON", joindf["LON"].cast("double"))
-new_input = new_input.withColumn("maxT", joindf["maxT"].cast("double"))
-new_input = new_input.withColumn("minT", joindf["minT"].cast("double"))
-new_input = new_input.withColumn("rain", joindf["rain"].cast("double"))
+new_input = new_input.withColumn("LAT", new_input["LAT"].cast("double"))
+new_input = new_input.withColumn("LON", new_input["LON"].cast("double"))
+new_input = new_input.withColumn("maxT", new_input["maxT"].cast("double"))
+new_input = new_input.withColumn("minT", new_input["minT"].cast("double"))
+new_input = new_input.withColumn("rain", new_input["rain"].cast("double"))
 
 st.show(new_input.show())
 
