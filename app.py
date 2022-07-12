@@ -70,7 +70,7 @@ new_input = spark.createDataFrame([(1, lat, lon, high, low, rain)],
 									T.StructField("LON",T.DoubleType(),True),
 									T.StructField("maxT",T.DoubleType(),True),
 									T.StructField("minT",T.DoubleType(),True),
-									T.STructField("rain",T.DoubleType(),True)]))
+									T.StructField("rain",T.DoubleType(),True)]))
 
 st.show(df.show())
 
