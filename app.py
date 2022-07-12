@@ -99,6 +99,27 @@ if new_input.select("rain") != 0.00:
 	max_val = max(probs)
 	max_index = probs.index(max_val)
 
+	st.write("Class A - one-fourth acre or less",
+		"Class B - more than one-fourth acre, but less than 10 acres",
+		"Class C - 10 acres or more, but less than 100 acres",
+		"Class D - 100 acres or more, but less than 300 acres",
+		"Class E - 300 acres or more, but less than 1,000 acres",
+		"Class F - 1,000 acres or more, but less than 5,000 acres"
+		"Class G - 5,000 acres or more")
+
+	st.write("Probability of fire:",
+		"Class A: ", probs[0],
+		"Class B: ", probs[1],
+		"Class C: ", probs[2],
+		"Class D: ", probs[3],
+		"Class E: ", probs[4],
+		"Class F: ", probs[5],
+		"Class G: ", probs[6])
+
+
+
+
+
 	st.write(max_val,max_index)	
 	st.write(proba[0][0])
 	#for row in prob:
@@ -107,4 +128,3 @@ if new_input.select("rain") != 0.00:
 	st.write("high",high)
 	st.write("low",low)
 	st.write("rain",rain)
-	st.write(prob, predi)
