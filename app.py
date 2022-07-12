@@ -95,6 +95,11 @@ if new_input.select("rain") != 0.00:
 	probs = []
 	for i in proba[0]:
 		probs.append(i)
+
+	max_val = max(probs)
+	max_index = probs.index(max_val)
+
+	st.write(max_val,max_index)	
 	st.write(proba[0][0])
 	#for row in prob:
 	#	st.write(row[0])
