@@ -47,7 +47,7 @@ plt.ylim([0, 260])
 ax.set_xlabel('Actual')
 ax.set_ylabel('Predicted')
 ax.set_title('Actual vs Predicted Prices',fontsize=20)
-plt.show(fig)
+fig.show()
 
 
 
