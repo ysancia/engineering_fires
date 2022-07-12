@@ -81,9 +81,13 @@ new_input = new_input.withColumn("precip", new_input["rain"].cast("double"))
 
 va = VectorAssembler(inputCols=features2, outputCol = "features")
 
+mm = MinMaxScaler(inputCol="features",outputCol="features_scaled")
+
 if new_input.select("rain") != 0.00:
 	new_input = va.transform(new_input)
-	new_pred = model.transform(new_input)
+	new_scale = mm.fit(new_input)
+	new_scale = mm.transform(new_scale)
+	new_pred = model.transform(new_scale)
 	prob = new_pred.select("probability")
 	predi = new_pred.select("prediction")
 	st.write(prob, predi)
