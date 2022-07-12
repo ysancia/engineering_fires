@@ -99,14 +99,15 @@ if new_input.select("rain") != 0.00:
 				"Class E","Class F", "Class G"]	
 	results = pd.DataFrame(list(zip(labels,probs)))
 
-	st.markdown("Class A - one-fourth acre or less")
-	st.markdown("Class B - more than one-fourth acre, but less than 10 acres") 
-	st.markdown("Class C - 10 acres or more, but less than 100 acres") 
-	st.markdown("Class D - 100 acres or more, but less than 300 acres") 
-	st.markdown("Class E - 300 acres or more, but less than 1,000 acres") 
-	st.markdown("Class F - 1,000 acres or more, but less than 5,000 acres") 
-	st.markdown("Class A - one-fourth acre or less") 
-	st.markdown("Class G - 5,000 acres or more")
+	st.text("Class A - one-fourth acre or less")
+	
+	st.text("Class B - more than one-fourth acre, but less than 10 acres") 
+	st.text("Class C - 10 acres or more, but less than 100 acres") 
+	st.text("Class D - 100 acres or more, but less than 300 acres") 
+	st.text("Class E - 300 acres or more, but less than 1,000 acres") 
+	st.text("Class F - 1,000 acres or more, but less than 5,000 acres") 
+	st.text("Class A - one-fourth acre or less") 
+	st.text("Class G - 5,000 acres or more")
 
 
 
