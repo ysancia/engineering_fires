@@ -92,6 +92,9 @@ if new_input.select("rain") != 0.00:
 	predi = new_pred.select("Prediction").collect()
 
 	proba = [row[0] for row in prob]
+	probs = []
+	for i in proba[0]:
+		probs.append(i)
 	st.write(proba[0][0])
 	#for row in prob:
 	#	st.write(row[0])
