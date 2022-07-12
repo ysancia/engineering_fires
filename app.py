@@ -65,9 +65,7 @@ new_input = [lat,lon,high,low,rain]
 
 va = VectorAssembler(inputCols=features2, outputCol = "features")
 
-new_input = va.transform(new_input)
-
-new_pred = model.transform(new_input)
-
 if new_input[4] != 0.00:
+	new_input = va.transform(new_input)
+	new_pred = model.transform(new_input)
 	st.show(new_pred)
