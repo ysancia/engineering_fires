@@ -22,7 +22,7 @@ model = model.fit(train_df)
 
 
 
-predictions = model2.transform(test_df).cache()
+predictions = model.transform(test_df).cache()
 evaluate_acc = MulticlassClassificationEvaluator(labelCol="size_index",
 											predictionCol="Prediction",
 											metricName="accuracy")
