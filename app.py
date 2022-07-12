@@ -7,7 +7,7 @@ import pyspark
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
 
-from pyspark.ml.classification import LogisticRegressionModel
+from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 conf = SparkConf().setAppName("model").setMaster("local")
@@ -17,7 +17,7 @@ spark = SparkSession.builder.config(conf=conf).getOrCreate()
 df = spark.read.load("processed_combined.parquet")
 train_df, test_df = df.randomSplit([0.7,0.3],seed=25)
 
-model = LogisticRegressionModel(labelCol = "size_index", featuresCol = "features", predictionCol = "Prediction")
+model = LogisticRegression(labelCol = "size_index", featuresCol = "features", predictionCol = "Prediction")
 model = model.fit(train_df)
 
 
