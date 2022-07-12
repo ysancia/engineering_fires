@@ -40,16 +40,15 @@ preds = [int(row["Prediction"]) for row in predictions.select("Prediction").coll
 actual = [int(row["size_index"]) for row in predictions.select("size_index").collect()]
 
 
-plt.scatter(actual,preds)
-#fig, ax = plt.subplots()
-#ax.scatter(actual, preds, color='b', s=60, alpha=0.1)
-#plt.plot([5,250], [5,250], color='r')
+
+fig, ax = plt.subplots()
+ax.scatter(actual, preds, color='b', s=60, alpha=0.1)
+plt.plot([5,250], [5,250], color='r')
 #plt.xlim([0, 260])
 #plt.ylim([0, 260])
-#ax.set_xlabel('Actual')
-#ax.set_ylabel('Predicted')
-#ax.set_title('Actual vs Predicted Prices',fontsize=20)
-#fig.show()
-
+ax.set_xlabel('Actual')
+ax.set_ylabel('Predicted')
+ax.set_title('Actual vs Predicted Prices',fontsize=20)
+st.pyplot(fig)
 
 
