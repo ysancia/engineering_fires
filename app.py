@@ -57,22 +57,28 @@ high = st.number_input("Enter your daily high temperature (in F):  ", min_value=
 low = st.number_input("Enter your daily low temperature (in F): ", min_value=None, max_value=None)
 rain = st.number_input("Enter your precipitation (in inches): ", min_value=None, max_value=None)
 
-lat = np.round(lat,decimals=1).asType(double)
-lon = np.round(lon,decimals=1).asType(double)
-high = (high - 32) * 5/9
-low = (low - 32) * 5/9
-rain = (rain * 25.4) * 10
+lat = str(np.round(lat,decimals=1))
+lon = str(np.round(lon,decimals=1))
+high = str((high - 32) * 5/9)
+low = str((low - 32) * 5/9)
+rain = str((rain * 25.4) * 10)
 
 new_input = spark.createDataFrame([(1, lat, lon, high, low, rain)],
 								T.StructType(
 									[T.StructField("id",T.IntegerType(),True),
-									T.StructField("LAT",T.DoubleType(),True),
-									T.StructField("LON",T.DoubleType(),True),
-									T.StructField("maxT",T.DoubleType(),True),
-									T.StructField("minT",T.DoubleType(),True),
-									T.StructField("rain",T.DoubleType(),True)]))
+									T.StructField("LAT",T.StringType(),True),
+									T.StructField("LON",T.StringType(),True),
+									T.StructField("maxT",T.StringType(),True),
+									T.StructField("minT",T.StringType(),True),
+									T.StructField("rain",T.StringType(),True)]))
 
-st.show(df.show())
+new_input = new_input.withColumn("LAT", joindf["LAT"].cast("double"))
+new_input = new_input.withColumn("LON", joindf["LON"].cast("double"))
+new_input = new_input.withColumn("maxT", joindf["maxT"].cast("double"))
+new_input = new_input.withColumn("minT", joindf["minT"].cast("double"))
+new_input = new_input.withColumn("rain", joindf["rain"].cast("double"))
+
+st.show(new_input.show())
 
 va = VectorAssembler(inputCols=features2, outputCol = "features")
 
