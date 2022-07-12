@@ -84,4 +84,6 @@ va = VectorAssembler(inputCols=features2, outputCol = "features")
 if new_input.select("rain") != 0.00:
 	new_input = va.transform(new_input)
 	new_pred = model.transform(new_input)
-	st.show(new_pred)
+	prob = new_pred.select("probability")
+	predi = new_pred.select("prediction")
+	st.write(prob, predi)
