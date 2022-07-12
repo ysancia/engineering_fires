@@ -35,6 +35,7 @@ accuracy = evaluate_acc.evaluate(predictions)
 
 preds = [int(row["Prediction"]) for row in predictions.select("Prediction").collect()]
 actual = [int(row["size_index"]) for row in predictions.select("size_index").collect()]
+st.set_page_config(layout="wide")
 st.write("Model loaded")
 st.write("Model accuracy: ")
 st.write(accuracy)
@@ -51,7 +52,7 @@ ax.set_title('Actual vs Predicted category',fontsize=20)
 
 features2 = ["LAT","LON","maxT","minT","precip"]
 
-st.set_page_config(layout="wide")
+
 
 with st.sidebar:
 	lat = st.number_input("Enter your Latitude: ", min_value=None, max_value=None)
