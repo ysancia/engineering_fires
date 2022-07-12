@@ -90,7 +90,7 @@ if new_input.select("rain") != 0.00:
 	new_pred = model.transform(new_scale)
 	prob = new_pred.select("probability").collect()
 	predi = new_pred.select("Prediction").collect()
-
+	st.write(prob.printSchema())
 	for i in prob:
 		st.write(i)
 
