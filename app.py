@@ -88,6 +88,6 @@ if new_input.select("rain") != 0.00:
 	mm = mm.fit(new_input)
 	new_scale = mm.transform(new_input)
 	new_pred = model.transform(new_scale)
-	prob = new_pred.select("probability")
-	predi = new_pred.select("prediction")
+	prob = new_pred.select("probability").show()
+	predi = new_pred.select("prediction").show()
 	st.write(prob, predi)
