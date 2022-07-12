@@ -8,6 +8,8 @@ import numpy as np
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
 
+from pyspark.sql import types as T
+
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
@@ -62,7 +64,13 @@ low = (low - 32) * 5/9
 rain = (rain * 25.4) * 10
 
 new_input = spark.createDataFrame([(1, lat, lon, high, low, rain)],
-									["id","LAT","LON","maxT","minT","precip"])
+								T.StructType(
+									[T.StructField("id",T.IntegerType(),True),
+									T.StructField("LAT",T.DoubleType(),True),
+									T.StructField("LON",T.DoubleType(),True),
+									T.StructField("maxT",T.DoubleType(),True),
+									T.StructField("minT",T.DoubleType(),True),
+									T.STructField("rain",T.DoubleType(),True)]))
 
 st.show(df.show())
 
