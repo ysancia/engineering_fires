@@ -1,7 +1,7 @@
 
 import streamlit as st
 import pandas as pd
-from matplotlib import pyplyt as plt
+from matplotlib import pyplot as plt
 import pyspark
 
 from pyspark import SparkConf
