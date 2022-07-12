@@ -36,9 +36,7 @@ accuracy = evaluate_acc.evaluate(predictions)
 preds = [int(row["Prediction"]) for row in predictions.select("Prediction").collect()]
 actual = [int(row["size_index"]) for row in predictions.select("size_index").collect()]
 st.set_page_config(layout="wide")
-st.write("Model loaded")
-st.write("Model accuracy: ")
-st.write(accuracy)
+
 
 
 fig, ax = plt.subplots()
@@ -55,6 +53,9 @@ features2 = ["LAT","LON","maxT","minT","precip"]
 
 
 with st.sidebar:
+	st.write("Model loaded")
+	st.write("Model accuracy: ")
+	st.write(accuracy)
 	lat = st.number_input("Enter your Latitude: ", min_value=None, max_value=None)
 	lon = st.number_input("Enter your Longitude: ", min_value=None, max_value=None)
 	high = st.number_input("Enter your daily high temperature (in F):  ", min_value=None, max_value=None)
@@ -127,7 +128,8 @@ with c2:
 	st.markdown(
 		"**Class G** - 5,000 acres or more \n"
 		)
-	st.markdown("# Predictions")
+	
 with c1:
+	st.markdown("# Predictions")
 	st.dataframe(results)
 
