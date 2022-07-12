@@ -4,12 +4,14 @@ import pandas as pd
 import matplotlib as plt
 import pyspark
 
+from pyspark import SparkConf
 from pyspark.sql import SparkSession
 
 from pyspark.ml.classification import LogisticRegressionModel
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
-spark = (pyspark.sql.SparkSession.builder.getOrCreate())
+conf = SparkConf().setAppName("model").setMaster("local")
+spark = SparkSession.builder..config(conf=conf).getOrCreate()
 #model = LogisticRegressionModel.load("./lr2")
 
 df = spark.read.load("processed_combined.parquet")
