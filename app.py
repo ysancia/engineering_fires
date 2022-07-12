@@ -51,11 +51,14 @@ ax.set_title('Actual vs Predicted category',fontsize=20)
 
 features2 = ["LAT","LON","maxT","minT","precip"]
 
-lat = st.number_input("Enter your Latitude: ", min_value=None, max_value=None)
-lon = st.number_input("Enter your Longitude: ", min_value=None, max_value=None)
-high = st.number_input("Enter your daily high temperature (in F):  ", min_value=None, max_value=None)
-low = st.number_input("Enter your daily low temperature (in F): ", min_value=None, max_value=None)
-rain = st.number_input("Enter your precipitation (in inches): ", min_value=None, max_value=None)
+st.set_page_config(layout="wide")
+
+with st.sidebar:
+	lat = st.number_input("Enter your Latitude: ", min_value=None, max_value=None)
+	lon = st.number_input("Enter your Longitude: ", min_value=None, max_value=None)
+	high = st.number_input("Enter your daily high temperature (in F):  ", min_value=None, max_value=None)
+	low = st.number_input("Enter your daily low temperature (in F): ", min_value=None, max_value=None)
+	rain = st.number_input("Enter your precipitation (in inches): ", min_value=None, max_value=None)
 
 lat = str(np.round(lat,decimals=1))
 lon = str(np.round(lon,decimals=1))
@@ -83,7 +86,10 @@ va = VectorAssembler(inputCols=features2, outputCol = "features")
 
 mm = MinMaxScaler(inputCol="features",outputCol="features_scaled")
 
-if new_input.select("rain") != 0.00:
+c1, c2 = st.columns((1, 1, ))
+
+
+#if new_input.select("rain") != 0.00:
 	new_input = va.transform(new_input)
 	mm = mm.fit(new_input)
 	new_scale = mm.transform(new_input)
@@ -97,6 +103,7 @@ if new_input.select("rain") != 0.00:
 	labels = ["Class A","Class B","Class C","Class D",
 				"Class E","Class F", "Class G"]	
 	results = pd.DataFrame(list(zip(labels,probs)),columns=["Class of Fire","Probability"])
+with c2:	
 	st.markdown("# Classes of Fire")
 	st.markdown(
 		"**Class A**: one-fourth acre or less \n"
@@ -120,5 +127,6 @@ if new_input.select("rain") != 0.00:
 		"**Class G** - 5,000 acres or more \n"
 		)
 	st.markdown("# Predictions")
+with c1:
 	st.dataframe(results)
 
