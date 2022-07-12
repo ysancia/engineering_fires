@@ -90,16 +90,13 @@ if new_input.select("rain") != 0.00:
 	new_pred = model.transform(new_scale)
 	prob = new_pred.select("probability").collect()
 	predi = new_pred.select("Prediction").collect()
-
 	proba = [row[0] for row in prob]
 	probs = []
 	for i in proba[0]:
 		probs.append(i)
 	labels = ["Class A","Class B","Class C","Class D",
 				"Class E","Class F", "Class G"]	
-
 	results = pd.DataFrame(list(zip(labels,probs)),columns=["Class of Fire","Probability"])
-
 	st.markdown("# Classes of Fire")
 	st.markdown(
 		"**Class A**: one-fourth acre or less \n"
@@ -122,8 +119,6 @@ if new_input.select("rain") != 0.00:
 	st.markdown(
 		"**Class G** - 5,000 acres or more \n"
 		)
-
-
 	st.markdown("# Predictions")
 	st.dataframe(results)
 
