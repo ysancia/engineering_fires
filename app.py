@@ -108,7 +108,7 @@ results = pd.DataFrame(list(zip(labels,probs)),columns=["Class of Fire","Probabi
 with c2:	
 	st.markdown("# Classes of Fire")
 	st.markdown(
-		"**Class A**: one-fourth acre or less \n"
+		"**Class A** - one-fourth acre or less \n"
 		)
 	st.markdown(
 		"**Class B** - more than one-fourth acre, but less than 10 acres \n"
@@ -132,4 +132,6 @@ with c2:
 with c1:
 	st.markdown("# Predictions")
 	st.dataframe(results)
+
+	st.markdown("*Based on data from 2000-2005 from [the US Department of Agriculture](https://www.fs.usda.gov/rds/archive/Catalog/RDS-2013-0009.5) and [the National Centers of Environmental Information](https://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ncdc:C00861/html)")
 
